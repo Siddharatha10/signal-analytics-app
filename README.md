@@ -1,5 +1,7 @@
 # Signal User Analytics Application
 
+Live dashboard: https://signal-analytics.netlify.app
+
 A small full-stack application that tracks user interactions (page views and
 clicks) on a webpage via a lightweight JavaScript snippet, stores them in
 MongoDB, and visualizes them in a React dashboard  built as the **Full Stack
@@ -162,3 +164,5 @@ To use it on any other page, just drop in:
   list) so it can be deployed as-is — e.g. backend on Render/Railway with a
   MongoDB Atlas URI, frontend on Vercel/Netlify with `VITE_API_BASE_URL`
   pointed at the deployed backend.
+
+
