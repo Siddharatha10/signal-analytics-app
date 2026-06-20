@@ -5,9 +5,13 @@ const eventRoutes = require("./routes/eventRoutes");
 function createApp() {
   const app = express();
 
-  app.use(
+  const allowedOrigins = (process.env.CLIENT_ORIGIN || "http://localhost:5173,http://localhost:3000")
+  .split(",")
+  .map((o) => o.trim());
+
+app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:3000"],
+    origin: allowedOrigins,
     methods: ["GET", "POST"],
   })
 );
