@@ -1,8 +1,8 @@
-# Signal — User Analytics Application
+# Signal User Analytics Application
 
 A small full-stack application that tracks user interactions (page views and
 clicks) on a webpage via a lightweight JavaScript snippet, stores them in
-MongoDB, and visualizes them in a React dashboard — built as the **Full Stack
+MongoDB, and visualizes them in a React dashboard  built as the **Full Stack
 Engineer** take-home assignment for CausalFunnel.
 
 ```
@@ -87,9 +87,8 @@ Heatmap views to see them appear.
 - It fires a `page_view` event as soon as the page loads.
 - It fires a `click` event (with `clientX`/`clientY` coordinates) on every
   click anywhere on the page, using event delegation on `document`.
-- Events are sent via `navigator.sendBeacon` (falling back to `fetch` with
-  `keepalive: true`), so events fired right before page unload still reach
-  the server.
+- Events are sent via `fetch` with `keepalive: true` and `credentials: "omit"`,
+  so events fire reliably without triggering CORS credential restrictions.
 
 To use it on any other page, just drop in:
 
@@ -139,10 +138,15 @@ To use it on any other page, just drop in:
   heuristic, not based on server-side session validation — there's no
   authentication layer, since the assignment treats sessions as anonymous
   visitor sessions, not logged-in users.
-- **No deduplication / retry logic.** If `sendBeacon`/`fetch` fails, the
-  event is simply dropped rather than queued for retry. For a take-home
-  assignment this trade-off favors simplicity; a production tracker would
-  likely batch events and retry with backoff.
+- **No deduplication / retry logic.** If a `fetch` call fails, the event is
+  simply dropped rather than queued for retry. For a take-home assignment
+  this trade-off favors simplicity; a production tracker would likely batch
+  events and retry with backoff.
+- **CORS configuration.** The backend explicitly allows the dashboard origin
+  and the demo-page origin (`http://localhost:5173` and `http://localhost:3000`)
+  rather than a wildcard, since wildcard origins are incompatible with
+  credentialed requests. In production, this list would be the actual
+  deployed frontend domain(s).
 - **Sessions list uses aggregation, not pre-computed counters.** `GET
   /api/sessions` aggregates over the `events` collection on every request
   rather than maintaining a separate `sessions` collection with running
