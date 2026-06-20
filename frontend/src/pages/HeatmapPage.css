@@ -1,0 +1,86 @@
+.page-select-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.page-select-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+}
+
+.page-select {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-hairline);
+  color: var(--ink-primary);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-family: var(--font-mono);
+  min-width: 220px;
+  cursor: pointer;
+}
+
+.page-select:hover {
+  border-color: var(--ink-faint);
+}
+
+.page-select-count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--signal);
+  margin-left: auto;
+}
+
+.heatmap-canvas-wrap {
+  position: relative;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.heatmap-canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.heatmap-grid-line {
+  stroke: var(--border-hairline);
+  stroke-width: 1;
+}
+
+.heatmap-dot {
+  fill: var(--signal);
+  stroke: var(--bg-void);
+  stroke-width: 1;
+  cursor: pointer;
+  transition: r 0.1s ease;
+}
+
+.heatmap-tooltip {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  background: var(--bg-panel-raised);
+  border: 1px solid var(--signal);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-secondary);
+  line-height: 1.6;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .page-select-count {
+    margin-left: 0;
+  }
+}

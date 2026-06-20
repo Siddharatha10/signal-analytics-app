@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo Page 1 - Analytics Tracker Test</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      max-width: 720px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+      color: #1a1a1a;
+    }
+    h1 { color: #2d2d6e; }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 16px 0;
+      background: #fafafa;
+    }
+    button {
+      background: #2d2d6e;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      margin: 6px 6px 0 0;
+    }
+    button:hover { background: #1f1f4d; }
+    nav a {
+      margin-right: 16px;
+      color: #2d2d6e;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    #session-info {
+      font-family: monospace;
+      font-size: 13px;
+      background: #eee;
+      padding: 10px;
+      border-radius: 6px;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home (Page 1)</a>
+    <a href="page2.html">Pricing (Page 2)</a>
+  </nav>
+
+  <h1>Welcome to the Demo Store</h1>
+  <p>
+    This page exists purely to exercise <code>tracker.js</code>. It fires a
+    <code>page_view</code> event on load, and a <code>click</code> event
+    (with x/y coordinates) on every click anywhere on the page.
+  </p>
+
+  <div class="card">
+    <h3>Click around!</h3>
+    <p>Click anywhere on this card, or use the buttons below, to generate click events.</p>
+    <button>Add to Cart</button>
+    <button>Buy Now</button>
+    <button>Add to Wishlist</button>
+  </div>
+
+  <div class="card">
+    <h3>Current Session</h3>
+    <div id="session-info">Loading session id...</div>
+  </div>
+
+  <!-- Point data-api-url at your running backend -->
+  <script src="tracker.js" data-api-url="http://localhost:5000/api/events"></script>
+  <script>
+    window.addEventListener("load", function () {
+      var el = document.getElementById("session-info");
+      if (window.AnalyticsTracker) {
+        el.textContent = "session_id: " + window.AnalyticsTracker.getSessionId();
+      }
+    });
+  </script>
+</body>
+</html>

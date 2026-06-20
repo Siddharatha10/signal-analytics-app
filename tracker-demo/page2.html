@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo Page 2 - Pricing</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      max-width: 720px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+      color: #1a1a1a;
+    }
+    h1 { color: #2d2d6e; }
+    nav a {
+      margin-right: 16px;
+      color: #2d2d6e;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .plans {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .plan {
+      flex: 1;
+      min-width: 180px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+    button {
+      background: #2d2d6e;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home (Page 1)</a>
+    <a href="page2.html">Pricing (Page 2)</a>
+  </nav>
+
+  <h1>Pricing Plans</h1>
+  <p>Navigating here from Page 1 keeps the same <code>session_id</code> — this is how the dashboard's "user journey" view links multiple page views together.</p>
+
+  <div class="plans">
+    <div class="plan">
+      <h3>Starter</h3>
+      <p>$9/mo</p>
+      <button>Choose Plan</button>
+    </div>
+    <div class="plan">
+      <h3>Growth</h3>
+      <p>$29/mo</p>
+      <button>Choose Plan</button>
+    </div>
+    <div class="plan">
+      <h3>Scale</h3>
+      <p>$99/mo</p>
+      <button>Choose Plan</button>
+    </div>
+  </div>
+
+  <script src="tracker.js" data-api-url="http://localhost:5000/api/events"></script>
+</body>
+</html>

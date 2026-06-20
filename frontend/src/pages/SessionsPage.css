@@ -1,0 +1,228 @@
+.page-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.page-heading h1 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0 0 var(--space-1) 0;
+}
+
+.page-heading__sub {
+  color: var(--ink-secondary);
+  font-size: 14px;
+  margin: 0;
+}
+
+.ghost-button {
+  background: transparent;
+  border: 1px solid var(--border-hairline);
+  color: var(--ink-secondary);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 13px;
+  font-family: var(--font-mono);
+  transition: border-color 0.15s ease, color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.ghost-button:hover {
+  border-color: var(--signal);
+  color: var(--signal);
+}
+
+.sessions-layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+@media (max-width: 880px) {
+  .sessions-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Sessions list ---- */
+
+.sessions-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: var(--space-1);
+}
+
+.session-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  text-align: left;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  width: 100%;
+}
+
+.session-row:hover {
+  border-color: var(--ink-faint);
+  background: var(--bg-panel-raised);
+}
+
+.session-row.is-selected {
+  border-color: var(--signal);
+  background: var(--signal-dim);
+}
+
+.session-row__id {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.session-row__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 12px;
+  color: var(--ink-secondary);
+}
+
+.session-row__stat strong {
+  color: var(--ink-primary);
+  font-weight: 600;
+}
+
+.session-row__time {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  color: var(--ink-faint);
+  font-size: 11px;
+}
+
+/* ---- Detail / journey ---- */
+
+.sessions-detail {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  min-height: 300px;
+}
+
+.journey-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.journey-header h2 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  margin: 0;
+}
+
+.journey-header__id {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+
+.journey-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.journey-item {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.journey-item__rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 14px;
+  flex-shrink: 0;
+}
+
+.journey-item__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ink-faint);
+  border: 2px solid var(--bg-panel);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.journey-item__dot--click {
+  background: var(--signal);
+  box-shadow: 0 0 0 3px var(--signal-dim);
+}
+
+.journey-item__line {
+  flex: 1;
+  width: 1px;
+  background: var(--border-hairline);
+  margin-top: 2px;
+}
+
+.journey-item__body {
+  padding-bottom: var(--space-5);
+  flex: 1;
+  min-width: 0;
+}
+
+.journey-item__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.journey-item__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-primary);
+}
+
+.journey-item__time {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+.journey-item__url {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-secondary);
+  margin-top: var(--space-1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.journey-item__delta {
+  font-size: 11px;
+  color: var(--ink-faint);
+  margin-top: var(--space-1);
+}

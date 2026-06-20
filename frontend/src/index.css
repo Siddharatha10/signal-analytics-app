@@ -1,0 +1,103 @@
+/* =========================================================
+   Design tokens — "Signal" theme
+   A dark, instrument-panel aesthetic for monitoring live
+   user behavior. One accent (signal cyan) marks anything
+   "live" or interactive; everything else stays quiet so
+   the data is what draws the eye.
+   ========================================================= */
+
+:root {
+  /* Color */
+  --bg-void: #0b0e14;        /* page background */
+  --bg-panel: #11151d;       /* card/panel background */
+  --bg-panel-raised: #161b26;/* hovered/active panel */
+  --border-hairline: #232938;
+  --ink-primary: #e8ecf3;
+  --ink-secondary: #8b93a7;
+  --ink-faint: #565d70;
+  --signal: #4ee2c4;         /* primary accent: clicks, live, success */
+  --signal-dim: rgba(78, 226, 196, 0.14);
+  --signal-glow: rgba(78, 226, 196, 0.45);
+  --warn: #f0a857;
+  --danger: #ef6f6f;
+
+  /* Type */
+  --font-display: "Fraunces", "Iowan Old Style", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "SF Mono", Consolas, monospace;
+
+  /* Layout */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-void);
+  color: var(--ink-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(78, 226, 196, 0.06), transparent 40%),
+    radial-gradient(circle at 85% 100%, rgba(78, 226, 196, 0.04), transparent 45%);
+  background-attachment: fixed;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--signal-glow);
+  color: #04130f;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-hairline);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-faint);
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
